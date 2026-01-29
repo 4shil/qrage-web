@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.brutal-button {
+  @apply bg-brutal-lime text-brutal-black font-bold py-3 px-6 border-4 border-brutal-black shadow-brutal hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 uppercase tracking-wide;
+}
+
+.brutal-button-secondary {
+  @apply bg-brutal-white text-brutal-black font-bold py-3 px-6 border-4 border-brutal-black shadow-brutal hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 uppercase tracking-wide;
+}
+
+.brutal-input {
+  @apply w-full p-4 border-4 border-brutal-black bg-brutal-white text-brutal-black font-medium focus:outline-none focus:ring-0 focus:shadow-brutal-lg transition-shadow;
+}
+
+.brutal-card {
+  @apply bg-brutal-white border-4 border-brutal-black shadow-brutal p-6;
+}
+
+.brutal-select {
+  @apply w-full p-4 border-4 border-brutal-black bg-brutal-white text-brutal-black font-medium focus:outline-none appearance-none cursor-pointer;
+}
