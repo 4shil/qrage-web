@@ -4,34 +4,220 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --brutal-black: #1a1a1a;
+  --brutal-white: #fafafa;
+  --brutal-lime: #c8e64a;
+  --brutal-gray: #e5e5e5;
+  --brutal-dark-gray: #737373;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--brutal-white);
+  color: var(--brutal-black);
+  min-height: 100vh;
+  line-height: 1.6;
 }
 
-.brutal-button {
-  @apply bg-brutal-lime text-brutal-black font-bold py-3 px-6 border-4 border-brutal-black shadow-brutal hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 uppercase tracking-wide;
+*:focus-visible {
+  outline: 3px solid var(--brutal-lime);
+  outline-offset: 2px;
 }
 
-.brutal-button-secondary {
-  @apply bg-brutal-white text-brutal-black font-bold py-3 px-6 border-4 border-brutal-black shadow-brutal hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 uppercase tracking-wide;
+@layer components {
+  .brutal-button {
+    @apply bg-[#c8e64a] text-[#1a1a1a] font-bold py-3 px-6 border-2 border-[#1a1a1a] uppercase tracking-wide cursor-pointer;
+    box-shadow: 3px 3px 0px 0px #1a1a1a;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .brutal-button:hover:not(:disabled) {
+    box-shadow: 1px 1px 0px 0px #1a1a1a;
+    transform: translate(2px, 2px);
+  }
+  
+  .brutal-button:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
+  
+  .brutal-button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+    box-shadow: 1px 1px 0px 0px #737373;
+  }
+  
+  .brutal-button-secondary {
+    @apply bg-white text-[#1a1a1a] font-bold py-3 px-6 border-2 border-[#1a1a1a] uppercase tracking-wide cursor-pointer;
+    box-shadow: 3px 3px 0px 0px #1a1a1a;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .brutal-button-secondary:hover:not(:disabled) {
+    box-shadow: 1px 1px 0px 0px #1a1a1a;
+    transform: translate(2px, 2px);
+  }
+  
+  .brutal-button-secondary:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
+  
+  .brutal-button-secondary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+    box-shadow: 1px 1px 0px 0px #737373;
+  }
+  
+  .brutal-input {
+    @apply w-full p-4 border-2 border-[#1a1a1a] bg-white text-[#1a1a1a] font-medium rounded-sm;
+    outline: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .brutal-input:focus {
+    box-shadow: 3px 3px 0px 0px #1a1a1a;
+    transform: translateY(-1px);
+  }
+  
+  .brutal-input::placeholder {
+    @apply text-gray-400;
+  }
+  
+  .brutal-card {
+    @apply bg-white border-2 border-[#1a1a1a] p-6 rounded-sm;
+    box-shadow: 5px 5px 0px 0px #1a1a1a;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .brutal-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 640px) {
+    .brutal-card {
+      box-shadow: 3px 3px 0px 0px #1a1a1a;
+      @apply p-4;
+    }
+  }
+  
+  .brutal-select {
+    @apply w-full p-4 border-2 border-[#1a1a1a] bg-white text-[#1a1a1a] font-medium cursor-pointer rounded-sm;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .brutal-select:focus {
+    box-shadow: 3px 3px 0px 0px #1a1a1a;
+    transform: translateY(-1px);
+    outline: none;
+  }
+  
+  .brutal-heading {
+    @apply font-extrabold uppercase tracking-tight;
+  }
+  
+  .brutal-label {
+    @apply font-semibold uppercase text-sm tracking-wide mb-2 block text-[#737373];
+    transition: color 0.2s ease;
+  }
+  
+  .brutal-label:hover {
+    @apply text-[#1a1a1a];
+  }
 }
 
-.brutal-input {
-  @apply w-full p-4 border-4 border-brutal-black bg-brutal-white text-brutal-black font-medium focus:outline-none focus:ring-0 focus:shadow-brutal-lg transition-shadow;
+/* Micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.brutal-card {
-  @apply bg-brutal-white border-4 border-brutal-black shadow-brutal p-6;
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.brutal-select {
-  @apply w-full p-4 border-4 border-brutal-black bg-brutal-white text-brutal-black font-medium focus:outline-none appearance-none cursor-pointer;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 230, 74, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Smooth hover effects */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brutal-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brutal-lime);
+  border: 2px solid var(--brutal-black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4f058;
 }
