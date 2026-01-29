@@ -1,0 +1,16 @@
+{
+  "name": "Qraw",
+  "short_name": "Qraw",
+  "description": "Fast, offline-capable QR code generator",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#c8e64a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
